@@ -46,6 +46,7 @@ export const PluginSelect: FC<Props> = ({
       onPluginChange(
         PluginList.find(
           (plugin) =>
+            // @ts-ignore
             plugin.name === selectElement?.selectedOptions[0].innerText,
         ) as Plugin,
       );
@@ -71,6 +72,7 @@ export const PluginSelect: FC<Props> = ({
           onChange={(e) => {
             onPluginChange(
               PluginList.find(
+                // @ts-ignore
                 (plugin) => plugin.id === e.target.value,
               ) as Plugin,
             );
@@ -87,15 +89,6 @@ export const PluginSelect: FC<Props> = ({
             ChatGPT
           </option>
 
-          {PluginList.map((plugin) => (
-            <option
-              key={plugin.id}
-              value={plugin.id}
-              className="dark:bg-[#343541] dark:text-white"
-            >
-              {plugin.name}
-            </option>
-          ))}
         </select>
       </div>
     </div>

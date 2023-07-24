@@ -19,6 +19,7 @@ import {ModelSelect} from './ModelSelect';
 import {SystemPrompt} from './SystemPrompt';
 import {TemperatureSlider} from './Temperature';
 import {MemoizedChatMessage} from './MemoizedChatMessage';
+import {BASE_API_URL} from "@/utils/app/const";
 
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
@@ -87,22 +88,15 @@ export const Chat = memo(({stopConversationRef}: Props) => {
           temperature: updatedConversation.temperature,
         };
         const endpoint = getEndpoint(plugin);
-        let body;
-        if (!plugin) {
-          body = JSON.stringify(chatBody);
-        } else {
-          body = JSON.stringify({
-            ...chatBody,
-            googleAPIKey: pluginKeys
-              .find((key) => key.pluginId === 'google-search')
-              ?.requiredKeys.find((key) => key.key === 'GOOGLE_API_KEY')?.value,
-            googleCSEId: pluginKeys
-              .find((key) => key.pluginId === 'google-search')
-              ?.requiredKeys.find((key) => key.key === 'GOOGLE_CSE_ID')?.value,
-          });
-        }
+        let body = JSON.stringify({
+          question: message.content,
+          knowledge_base: 'metallurgy',
+          messages: updatedConversation.messages,
+          llm_type: updatedConversation.model.id,
+        });
+
         const controller = new AbortController();
-        const response = await fetch(endpoint, {
+        const response = await fetch(`${BASE_API_URL}/api/chat`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

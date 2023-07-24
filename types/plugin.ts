@@ -19,21 +19,8 @@ export enum PluginName {
   GOOGLE_SEARCH = 'Google Search',
 }
 
-export const Plugins: Record<PluginID, Plugin> = {
-  [PluginID.GOOGLE_SEARCH]: {
-    id: PluginID.GOOGLE_SEARCH,
-    name: PluginName.GOOGLE_SEARCH,
-    requiredKeys: [
-      {
-        key: 'GOOGLE_API_KEY',
-        value: '',
-      },
-      {
-        key: 'GOOGLE_CSE_ID',
-        value: '',
-      },
-    ],
-  },
+export const Plugins: {} = {
+
 };
 
 export const PluginList = Object.values(Plugins);

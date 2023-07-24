@@ -324,9 +324,7 @@ export const ChatInput = ({
                   : 'hidden'
               }`,
             }}
-            placeholder={
-              t('Type a message or type "/" to select a prompt...') || ''
-            }
+            placeholder={'请输入消息内容, 按Shift+Enter换行, 按Enter发送'}
             value={content}
             rows={1}
             onCompositionStart={() => setIsTyping(true)}
@@ -380,18 +378,7 @@ export const ChatInput = ({
         </div>
       </div>
       <div className="px-3 pt-2 pb-3 text-center text-[12px] text-black/50 dark:text-white/50 md:px-4 md:pt-3 md:pb-6">
-        <a
-          href="https://github.com/mckaywrigley/chatbot-ui"
-          target="_blank"
-          rel="noreferrer"
-          className="underline"
-        >
-          ChatBot UI
-        </a>
-        .{' '}
-        {t(
-          "Chatbot UI is an advanced chatbot kit for OpenAI's chat models aiming to mimic ChatGPT's interface and functionality.",
-        )}
+        冶金问答机器人, 在LLM基础上外挂知识库. 旨在为冶金领域工作者提供一个快速的问答平台, 以解决在工作中遇到的问题.
       </div>
     </div>
   );

@@ -360,7 +360,7 @@ const Home = ({
       }}
     >
       <Head>
-        <title>Chatbot UI</title>
+        <title>冶金问答机器人</title>
         <meta name="description" content="ChatGPT but better." />
         <meta
           name="viewport"
